@@ -1,6 +1,27 @@
 # Testing Course Django x VueJS from CFE
 
-This template should help get you started developing with Vue 3 in Vite.
+Code along repo for Django x Vue.js course from cfe.
+
+# Installation / Development Info
+1. Install nvm
+2. Install latest version of node using: nvm install version
+```sh
+nvm install 18.14.1
+```
+3. Install node modules in base directory
+```sh
+npm install
+```
+4. Install/Upgrade yarn if not installed
+```sh
+npm install --global yarn
+```
+5. Run dev and then run django server in 2 different terminals
+```sh
+yarn dev
+```
+yarn dev is equivalent to but better than: npm run dev
+
 
 ## Customize configuration
 
