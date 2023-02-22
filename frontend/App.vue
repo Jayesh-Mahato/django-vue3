@@ -1,6 +1,7 @@
 <script setup>
 import {ref} from 'vue'
 import ApiGetRequest from './components/ApiGetRequest.vue';
+import CreateForm from './components/CreateForm.vue';
 import TheWelcome from "./components/TheWelcome.vue";
 import store from './store'
 const props = defineProps({
@@ -12,11 +13,11 @@ if (props.token) {
 }
 const username = props.user ? props.user : "";
 
-let counteg = ref(0)
-function incrementeg(event) {
-  console.log(event)
-  counteg.value++
-}
+// let count = ref(0)
+// function increment(event) {
+//   console.log(event)
+//   count.value++
+// }
 </script>
 
 <template>
@@ -26,6 +27,7 @@ function incrementeg(event) {
   </header>
 
   <main>
+    <CreateForm />
     <TheWelcome />
   </main>
 </template>
