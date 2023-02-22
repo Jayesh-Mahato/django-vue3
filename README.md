@@ -38,9 +38,16 @@ npm install
 ```sh
 npm run dev
 ```
-
+or
+```sh
+yarn dev
+```
 ### Compile and Minify for Production
 
 ```sh
 npm run build
+```
+or
+```sh
+yarn build
 ```

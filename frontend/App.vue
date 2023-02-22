@@ -1,22 +1,28 @@
 <script setup>
-import TheWelcome from './components/TheWelcome.vue'
-const props =defineProps({
+import {ref} from 'vue'
+import ApiGetRequest from './components/ApiGetRequest.vue';
+import TheWelcome from "./components/TheWelcome.vue";
+import store from './store'
+const props = defineProps({
   token: String,
-  user: String
-})
-const token = props.token ? props.token : null
-const username = props.user ? props.user : ''
-console.log(props)
+  user: String,
+});
+if (props.token) {
+  store.setToken(props.token)
+}
+const username = props.user ? props.user : "";
+
+let counteg = ref(0)
+function incrementeg(event) {
+  console.log(event)
+  counteg.value++
+}
 </script>
 
 <template>
   <header>
-    {{ token }} - {{ username }}
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-
-    </div>
+    <ApiGetRequest />
+    {{ store.count }} - {{ store.token }} - {{ username }}
   </header>
 
   <main>
