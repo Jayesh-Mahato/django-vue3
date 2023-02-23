@@ -2,11 +2,12 @@
 import axios from 'axios'
 import store from './../store'
 import {ref, reactive} from 'vue'
-const formData = reactive({
+const initFormData = {
     'title': '',
     'slug': '',
     'content':'',
-})
+}
+const formData = reactive({...initFormData})
 const error = ref({})
 const handleAutoSlugChange = (event) => {
     // console.log(formData.title)
@@ -29,13 +30,21 @@ const handleSubmitForm = async (event) => {
     try {
         response = await axios.post('/api/posts/create',
         formDataJson, axiosConfig)
-    } catch (error) {
-        error.value = error.response
-        if (error.response.status === 500) {
-            alert("Server failed; Please try again.")
-        }
-        console.log(error.value)
+    } catch (err) {
+        response = err.response
+        error.value = err.response
+        
     }
+
+    if (response.status === 201) {
+        for (let key of Object.keys(formData)) {
+            formData[key] = initFormData[key]
+        }
+    }
+    if (response.status === 500) {
+        alert("Server failed; Please try again.")
+    }
+    console.log(error.value)
     console.log(response)
 }
 
